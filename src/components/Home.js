@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Section from "./Section";
+import ReachUsSection from "./ReachUs"
 import DevSection from "./DevSection"
 import MVPSection from "./MVP";
 import CaseStudySection from "./CaseStudy";
-
+import StartupSection from "./StartupSection";
 
 function Home() {
   return (
@@ -30,40 +30,15 @@ function Home() {
       leftButtonText="Custom Order"
       rightButtonText="Existing Inventory"
        />
-      <Section
-        title="Model 3"
-        description="Order Online for Touchless Delivery"
-        backgroundImage="model-3.jpg"
-        leftButtonText="Custom Order"
-        rightButtonText="Existing Inventory"
-      />
-      <Section
-        title="Model X"
-        description="Order Online for Touchless Delivery"
-        backgroundImage="model-x.jpg"
-        leftButtonText="Custom Order"
-        rightButtonText="Existing Inventory"
-      />
-      <Section
-        title="Solar Panels"
-        description="Lowest Cost Solar Panels in America"
-        backgroundImage="solar-panel.jpg"
-        leftButtonText="Order Now"
-        rightButtonText="Learn More"
-      />
-      <Section
-        title="Solar Roof"
-        description="Produce Clean Energy From Your Roof"
-        backgroundImage="solar-roof.jpg"
-        leftButtonText="Order Now"
-        rightButtonText="Learn More"
-      />
-      <Section
-        title="Accessories"
+      
+      <StartupSection />
+      <ReachUsSection
+        title="REACH US"
         description=""
-        backgroundImage="accessories.jpg"
-        leftButtonText="Shop Now"
+        // backgroundImage="accessories.jpg"
+        
       />
+      
     </Container>
   );
 }
@@ -71,7 +46,7 @@ function Home() {
 export default Home;
 const Container = styled.div`
   height: 100vh;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y ;
   overflow-y: scroll;
   overflow-x: hidden;
 `;

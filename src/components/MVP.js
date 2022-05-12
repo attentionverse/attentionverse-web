@@ -2,69 +2,84 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import Playground from 'javascript-playgrounds';
+import { connect } from 'react-redux'
+import * as MVPActions from "../redux/actions/MVPAction"
 
-function MVPSection({
-  title,
-  description,
-  backgroundImage,
-}) {
-  const [MVP1Status, setMVP1Status] = useState(false);
-  const buttonList = [
-    {
-      "id":0,
-      "name":"MVP1",
-      "url":"https://unpkg.com/javascript-playgrounds@1.1.4/public/index.html#data=%7B%0A%20%20%20%20%22preset%22%3A%20%22react-native%22%2C%0A%20%20%20%20%22fullscreen%22%3A%20true%2C%0A%20%20%20%20%22panes%22%3A%0A%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%22editor%22%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22id%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22type%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22platform%22%3A%20%22ios%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22width%22%3A%20130%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22scale%22%3A%200.75%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22code%22%3A%20%22%22%0A%7D"
+const buttonList = [
+  {
+    "id": 0,
+    "name": "MVP1",
+    "url": "https://unpkg.com/javascript-playgrounds@1.1.4/public/index.html#data=%7B%0A%20%20%20%20%22preset%22%3A%20%22react-native%22%2C%0A%20%20%20%20%22fullscreen%22%3A%20true%2C%0A%20%20%20%20%22panes%22%3A%0A%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%22editor%22%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22id%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22type%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22platform%22%3A%20%22ios%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22width%22%3A%20130%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22scale%22%3A%200.75%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22code%22%3A%20%22%22%0A%7D"
   },
   {
-    "id":1,
-    "name":"MVP2",
-    "url":"//unpkg.com/javascript-playgrounds@^1.0.0/public/index.html"
-},
-{
-  "id":2,
-  "name":"MVP3",
-  "url":"https://unpkg.com/javascript-playgrounds@1.1.4/public/index.html#data=%7B%0A%20%20%20%20%22preset%22%3A%20%22react-native%22%2C%0A%20%20%20%20%22fullscreen%22%3A%20true%2C%0A%20%20%20%20%22panes%22%3A%0A%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%22editor%22%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22id%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22type%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22platform%22%3A%20%22ios%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22width%22%3A%20130%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22scale%22%3A%200.75%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22code%22%3A%20%22%22%0A%7D"
-},
+    "id": 1,
+    "name": "MVP2",
+    "url": "//unpkg.com/javascript-playgrounds@^1.0.0/public/index.html"
+  },
+  {
+    "id": 2,
+    "name": "MVP3",
+    "url": "https://unpkg.com/javascript-playgrounds@1.1.4/public/index.html#data=%7B%0A%20%20%20%20%22preset%22%3A%20%22react-native%22%2C%0A%20%20%20%20%22fullscreen%22%3A%20true%2C%0A%20%20%20%20%22panes%22%3A%0A%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%22editor%22%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22id%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22type%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22platform%22%3A%20%22ios%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22width%22%3A%20130%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22scale%22%3A%200.75%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22code%22%3A%20%22%22%0A%7D"
+  },
 ]
-  const onPress =(id) => {
-    console.log(" MVP.js onPress() value  id : ", id)
-    
+
+class MVPSection extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      MVP1Status: false
+    }
   }
-  return (
-    <Wrap bgImage={backgroundImage}>
-      <Fade bottom>
-        <ItemText>
-          <h1>{title}</h1>
-        </ItemText>
-        <PlayGround>
-          <ButtonBox>
-            {
-              buttonList.map((item, index) => (
-                <Button onClick={() =>onPress(item.id)}>
-              {item.name}
-            </Button>
-              ))}
-          </ButtonBox>
-          <Editor>
-            <iframe
-              frameborder="0"
-              width={"100%"}
-              height={"100%"}
 
-              src={MVP1Status ? "https://unpkg.com/javascript-playgrounds@1.1.4/public/index.html#data=%7B%0A%20%20%20%20%22preset%22%3A%20%22react-native%22%2C%0A%20%20%20%20%22fullscreen%22%3A%20true%2C%0A%20%20%20%20%22panes%22%3A%0A%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%22editor%22%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22id%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22type%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22platform%22%3A%20%22ios%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22width%22%3A%20130%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22scale%22%3A%200.75%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22code%22%3A%20%22%22%0A%7D"
-                :
-                "//unpkg.com/javascript-playgrounds@^1.0.0/public/index.html"}
-            >
-            </iframe>
-          </Editor>
-          
-        </PlayGround>
-      </Fade>
-    </Wrap>
-  );
+  onPress = (id) => {
+    console.log(" MVP.js onPress() value  id : ", id)
+    const fun = buttonList.filter(item => item.id == id)
+    this.props.saveMVP(fun)
+  }
+
+  render() {
+
+    console.log(" hi this is the value : ",this.props.mvpData)
+    return (
+      
+
+      <Wrap >
+        <Fade bottom>
+          <ItemText>
+            <h1>{"MVP in 2 Weeks"}</h1>
+            {/* <text >{JSON.stringify(this.props.mvpData)}</text> */}
+          </ItemText>
+          <PlayGround>
+            <ButtonBox>
+              {
+                buttonList.map((item, index) => (
+                  <Button onClick={() => this.onPress(item.id)}>
+                    {item.name}
+                  </Button>
+                ))}
+            </ButtonBox>
+            <Editor>
+              {
+                this.props?.mvpData.map((item, index) => (
+                  <iframe
+                    frameborder="0"
+                    width={"100%"}
+                    height={"100%"}
+                    src={item.url}
+                  >
+                  </iframe>
+                ))}
+
+            </Editor>
+
+          </PlayGround>
+        </Fade>
+      </Wrap>
+    )
+
+  }
+
 }
-
-export default MVPSection;
 
 const Wrap = styled.div`
   width: 100vw;
@@ -130,3 +145,15 @@ const Editor = styled.div`
   width: 100vw;
   height:80vh;
 `;
+
+const mapStateToProps = (state) => ({
+  mvpData: state.mvp.mvp_data
+ 
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  saveMVP: (q) => dispatch(MVPActions.saveMVP(q))
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MVPSection)
