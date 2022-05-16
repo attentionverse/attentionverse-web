@@ -1,0 +1,116 @@
+{
+	"resource_buttons": [
+		{
+			"id": 0,
+            "name":"Marketing",
+			"resources":[
+                {
+                    "id":0,
+                    "url":"https://www.youtube.com/watch?v=RfxbGI19qeY"
+                },
+                {
+                    "id":1,
+                    "url":"https://www.youtube.com/watch?v=MWVv-lFOE9A"
+                },
+                {
+                    "id":2,
+                    "url":"https://www.youtube.com/watch?v=Rf4rU1hwQXc"
+                }
+            ]
+		},
+		{
+			"id": 1,
+            "name":"Accounting Software",
+            "resources":[
+                {
+                    "id":0,
+                    "url":"https://www.youtube.com/watch?v=RfxbGI19qeY"
+                },
+                {
+                    "id":1,
+                    "url":"https://www.youtube.com/watch?v=MWVv-lFOE9A"
+                },
+                {
+                    "id":2,
+                    "url":"https://www.youtube.com/watch?v=Rf4rU1hwQXc"
+                }
+            ]
+			
+		},
+		{
+			"id": 2,
+            "name":"Branding",
+            "resources":[
+                {
+                    "id":0,
+                    "url":"https://www.youtube.com/watch?v=RfxbGI19qeY"
+                },
+                {
+                    "id":1,
+                    "url":"https://www.youtube.com/watch?v=MWVv-lFOE9A"
+                },
+                {
+                    "id":2,
+                    "url":"https://www.youtube.com/watch?v=Rf4rU1hwQXc"
+                }
+            ]
+			
+		},
+        {
+			"id": 3,
+            "name":"Web Building",
+            "resources":[
+                {
+                    "id":0,
+                    "url":"https://www.youtube.com/watch?v=RfxbGI19qeY"
+                },
+                {
+                    "id":1,
+                    "url":"https://www.youtube.com/watch?v=MWVv-lFOE9A"
+                },
+                {
+                    "id":2,
+                    "url":"https://www.youtube.com/watch?v=Rf4rU1hwQXc"
+                }
+            ]
+			
+		},
+        {
+			"id": 3,
+            "name":"Analytics Tools",
+            "resources":[
+                {
+                    "id":0,
+                    "url":"https://www.youtube.com/watch?v=RfxbGI19qeY"
+                },
+                {
+                    "id":1,
+                    "url":"https://www.youtube.com/watch?v=MWVv-lFOE9A"
+                },
+                {
+                    "id":2,
+                    "url":"https://www.youtube.com/watch?v=Rf4rU1hwQXc"
+                }
+            ]
+			
+		}
+	],
+	"marketing": [
+		{
+			"id": 0,
+			"text": "https://img.youtube.com/vi/n3VZCJoSgoI/hqdefault.jpg",
+			"video": "https://www.youtube.com/watch?v=Ie_pcLsdb5E"
+		},
+		{
+			"id": 1,
+			"text": "https://img.youtube.com/vi/8_rSsJXmLNk/hqdefault.jpg",
+			"video": "https://www.youtube.com/watch?v=RX0Y2JbS9K4"
+		},
+		{
+			"id": 2,
+			"text": "https://img.youtube.com/vi/sbT-u-WXH-g/hqdefault.jpg",
+			"video": "https://www.youtube.com/watch?v=RfxbGI19qeY"
+		}
+	]
+
+}

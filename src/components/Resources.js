@@ -3,54 +3,50 @@ import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
-import data from '../config/data.json'
-import { connect } from 'react-redux'
-import * as StartupAction from '../redux/actions/StartupAction'
+import data from "../config/data.json"
 
-function StartupSection({
-  title,
-  description,
-  leftButtonText,
-  rightButtonText,
-  backgroundImage,
-  showDownArrow,
-  saveId
-}) {
+function Resources({
+  id
+}
+  
+ ) {
 
-  let navigate = useNavigate();
-  const routeChange = () => {
-    let path = `/resources`;
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/resources`; 
     navigate(path);
   }
   return (
     <Wrap
-      bgImage={backgroundImage}
-      id={title.replace(/ /g, "_")}
+    style={{backgroundColor:'black'}}
+      
     >
-      <ItemText>
-        <h1>{title}</h1>
-      </ItemText>
-
+      
+      <Block>
+      <div class="container">
+        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+      </div>
+      </Block>
+      <Block>
+      <div class="container">
+        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+      </div>
+      </Block>
+      <Block>
       <div class="container">
         <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
       </div>
       <MoreSection>
-        {
-          data.resource_buttons.map((item, index) => (
-            <Button onClick={() => {
-              saveId(item.id)
-              routeChange()
-            }}
-            >
-              {item.name}
-            </Button>
-          ))}
+      <a href="https://www.w3schools.com" style={{color:"white"}}>More Info</a>
       </MoreSection>
+      </Block>
 
     </Wrap>
   );
 }
 
+
+export default Resources;
 
 const Wrap = styled.div`
   width: 100vw;
@@ -61,6 +57,9 @@ const Wrap = styled.div`
   display: flex;
   margin-left:auto;
   margin-right:auto;
+  overflow-y: scroll
+
+  ;
   
   flex-direction: column;
   background-image: ${(props) => `url("/images/${props.bgImage}")`};
@@ -106,16 +105,14 @@ const Button = styled.div`
   margin-left:10px;
   cursor:pointer;
 `;
+const Block = styled.div`
+  margin-top:3vh;
+  margin-bottom:3vh;
+  
+  cursor:pointer;
+`;
 
-const mapStateToProps = (state) => ({
-  Id: state.startup.id
 
-})
 
-const mapDispatchToProps = (dispatch) => ({
-  saveId: (q) => dispatch(StartupAction.saveId(q))
 
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(StartupSection);
 

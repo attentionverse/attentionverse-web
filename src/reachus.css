@@ -35,7 +35,14 @@
     margin-right: auto;
 }
 
-.mainform{
-    padding-left: 10px;
-    padding-right: 10px;
+#FORM{
+    margin-left:20px;
+    margin-right: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+label{
+    color:white;
 }

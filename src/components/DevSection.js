@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 import "../devSection.css"
+import { colors } from '../config/Theme'
 
 function DevSection({
   title,
@@ -12,18 +13,21 @@ function DevSection({
   showDownArrow,
 }) {
   return (
-    <Wrap bgImage={backgroundImage}>
-      <ItemText>
-        <h1>{title}</h1>
+    <Wrap bgImage={backgroundImage} id={title.replace(/ /g, "_")}>
+      <ItemText >
+        <h1 >{title}</h1>
       </ItemText>
-      
-      <div class="container"> 
-  <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-</div>
-      <div>
-        <text>Exercitation fugiat anim aliquip amet. Aliqua anim in excepteur duis eiusmod esse tempor ipsum elit elit duis adipisicing laborum magna. Exercitation esse eiusmod pariatur sit tempor consectetur nulla duis proident eiusmod. Tempor minim ad ad cillum. Anim aute consectetur excepteur dolor dolore nisi anim adipisicing ullamco minim laboris.</text>
+      <YoutubeBlock>
+      <div class="container">
+        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
       </div>
-      
+      </YoutubeBlock>
+      <InfoSection>
+      <div>
+        <text id="TEXT">Exercitation fugiat anim aliquip amet. Aliqua anim in excepteur duis eiusmod esse tempor ipsum elit elit duis adipisicing laborum magna. Exercitation esse eiusmod pariatur sit tempor consectetur nulla duis proident eiusmod. Tempor minim ad ad cillum. Anim aute consectetur excepteur dolor dolore nisi anim adipisicing ullamco minim laboris.</text>
+      </div>
+      </InfoSection>
+
     </Wrap>
   );
 }
@@ -40,6 +44,7 @@ const Wrap = styled.div`
   display: flex;
   margin-left:auto;
   margin-right:auto;
+
   
   flex-direction: column;
   background-image: ${(props) => `url("/images/${props.bgImage}")`};
@@ -48,10 +53,11 @@ const Wrap = styled.div`
 `;
 
 const ItemText = styled.div`
-  padding-top: 7vh;
+  padding-top: 10vh;
   padding-bottom:0vh;
   text-align: center;
   margin-bottom:2vh;
+  color:colors.white;
 
 `;
 
@@ -60,6 +66,14 @@ const Container = styled.div`
   flex-direction:column;
   align-items:center;
   justify-content:space-around;
+`;
+const YoutubeBlock = styled.div`
+
+`;
+const InfoSection = styled.div`
+margin-top:5vh;
+margin-left:20px;
+margin-right:20px;
 `;
 
 

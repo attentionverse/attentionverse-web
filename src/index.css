@@ -15,15 +15,13 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-h1 {
+h1,h2,h3,h4 {
   font-size: 40px;
   font-weight: bold;
+  color:white
 }
 p {
   font-size: 16px;
-}
-a {
-  text-decoration: none;
 }
 
 @keyframes bounce {
@@ -41,3 +39,56 @@ a {
     transform: translateY(3px);
   }
 }
+
+/* Header Section */
+
+#HEADER {
+  text-decoration: none;
+  color: white;
+}
+#HEADER-MENU {
+  text-decoration: none;
+  color: #141414;
+}
+
+
+/* Your Dev Section Starts */
+
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 10%;
+  height: 40vh;
+   /* 4:3 Aspect Ratio */
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+h1{
+  color:"white"
+}
+
+#TEXT{
+  color: white;
+}
+
+/* Your Deve Section Ends */
+
+
+/* MVP Section Starts */
+#MVP_TEXT{
+  font-weight: 600;
+  color:#141414;
+  
+}
+
+/* MVP Section Ends */

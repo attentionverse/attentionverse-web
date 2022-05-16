@@ -13,21 +13,23 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
 import 'ace-builds/src-noconflict/ace';
 
+
+// https://snack.expo.dev/@sthir/chat-screen
 const buttonList = [
   {
     "id": 0,
     "name": "Wannabe App",
     "section_one": "https://www.figma.com/file/For3z1qjtCOX0IQUbPD0xB/wannabae.live?node-id=0%3A1",
-    "section_two": "https://snack.expo.dev/@sthir/chat-screen",
-    "section_three": "",
+    "section_two": "https://unpkg.com/javascript-playgrounds@1.1.4/public/index.html#data=%7B%0A%20%20%20%20%22preset%22%3A%20%22react-native%22%2C%0A%20%20%20%20%22fullscreen%22%3A%20true%2C%0A%20%20%20%20%22panes%22%3A%0A%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%22editor%22%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22id%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22type%22%3A%20%22player%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22platform%22%3A%20%22ios%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22width%22%3A%20130%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22scale%22%3A%200.75%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22code%22%3A%20%22%22%0A%7D",
+    "section_three": "https://snack.expo.dev/@sthir/chat-screen",
     "section_four": ""
   },
   {
     "id": 1,
     "name": "Uplo App",
-    "section_one": "https://www.figma.com/file/For3z1qjtCOX0IQUbPD0xB/wannabae.live?node-id=0%3A1",
+    "section_one": "https://www.figma.com/file/ADg7NCPLGH0TarxmFQcUvR/netflix-screens",
     "section_two": "https://snack.expo.dev/@sthir/chat-screen",
-    "section_three": "",
+    "section_three": "//unpkg.com/javascript-playgrounds@^1.0.0/public/index.html",
     "section_four": ""
   },
   {
@@ -35,7 +37,7 @@ const buttonList = [
     "name": "Netflix App",
     "section_one": "https://www.figma.com/file/For3z1qjtCOX0IQUbPD0xB/wannabae.live?node-id=0%3A1",
     "section_two": "https://snack.expo.dev/@sthir/chat-screen",
-    "section_three": "",
+    "section_three": "//unpkg.com/javascript-playgrounds@^1.0.0/public/index.html",
     "section_four": ""
   },
   {
@@ -43,12 +45,11 @@ const buttonList = [
     "name": " Pollinate",
     "section_one": "https://www.figma.com/file/For3z1qjtCOX0IQUbPD0xB/wannabae.live?node-id=0%3A1",
     "section_two": "https://snack.expo.dev/@sthir/chat-screen",
-    "section_three": "",
+    "section_three": "https://snack.expo.dev/@sthir/chat-screen",
     "section_four": ""
   },
 
 ]
-
 
 class CaseStudySection extends React.Component {
   constructor(props) {
@@ -65,17 +66,25 @@ class CaseStudySection extends React.Component {
   }
 
   render() {
+    const {
+      title,
+      description,
+      leftButtonText,
+      rightButtonText,
+      backgroundImage,
+      showDownArrow,
+    } = this.props;
 
-    console.log(" hi this is the value : ", this.props.mvpData)
+    console.log("Case Study.js hi this is the value : ", this.props.mvpData)
     return (
-      <Wrap bgImage={this.props.backgroundImage}>
-
+      <Wrap 
+      bgImage={this.props.backgroundImage} 
+      id={title.replace(/ /g,"_")}
+      >
         <Fade bottom>
-
           <ItemText>
-            <h1>{this.props.title}</h1>
+            <h1>{title}</h1>
           </ItemText>
-
           <ButtonBox>
             {
               buttonList.map((item, index) => (
@@ -87,7 +96,7 @@ class CaseStudySection extends React.Component {
           {
             this.props.caseStudyData.map((item, index) => (
               <Container>
-                <h3>{" 1. Idea to Design"}</h3>
+                <h3>1. Idea to Design</h3>
                 <Section>
                   <Figma>
                     <iframe
@@ -99,7 +108,7 @@ class CaseStudySection extends React.Component {
                     />
                   </Figma>
                 </Section>
-                <h3>{" 2. Design to Screen"}</h3>
+                <h3>2. Design to Screen</h3>
                 <Section>
                   <iframe
                     frameborder="2"
@@ -110,7 +119,7 @@ class CaseStudySection extends React.Component {
                   >
                   </iframe>
                 </Section>
-                <h3>{" 3. Screen to Functionality"}</h3>
+                <h3>3. Screen to Functionality</h3>
                 <Section>
                   <SplitEditor
                     mode="json"
@@ -137,11 +146,11 @@ class CaseStudySection extends React.Component {
                     width={"100%"}
                     height={"450"}
 
-                    src={"//unpkg.com/javascript-playgrounds@^1.0.0/public/index.html"}
+                    src={item.section_three}
                   >
                   </iframe>
                 </Section>
-                <h3>{" 4. Publish App"}</h3>
+                <h3>4. Publish App</h3>
                 <Section>
                   <iframe
                     frameborder="2"
@@ -170,14 +179,6 @@ class CaseStudySection extends React.Component {
   }
 }
 
-const questionList = [
-  { description: '1. Idea to designs', key: 0 },
-  { description: '2. Design to screen', key: 1 },
-  { description: '3. Screen to functionality ', key: 2 },
-  { description: '4. Publish App ', key: 3 }
-];
-
-
 const Wrap = styled.div`
   width: 100vw;
   background-size: cover;
@@ -192,7 +193,7 @@ const Wrap = styled.div`
 `;
 
 const ItemText = styled.div`
-  padding-top: 3vh;
+  padding-top: 10vh;
   text-align: center;
 `;
 
@@ -225,26 +226,26 @@ const Button = styled.div`
   padding-bottom:10px;
   border-radius:10px;
   text-align:center;
-  background-color:lightgreen;
+  background-color:white;
   margin-top:5px;
   margin-bottom:5px;
   margin-left:10px;
+  cursor:pointer;
 `;
 const Figma = styled.div`
   
 `;
 const FigmaBox = styled.div`
-          margin-top:10px;
-          display: flex;
-          flex-direction:row;
-          justify-content:space-around;
-         
-          border-color:red;
-          border-width:3px;
-          border:1px solid black;
-          background-color:black ;
+  margin-top:10px;
+  display: flex;
+  flex-direction:row;
+  justify-content:space-around;
+  border-color:red;
+  border-width:3px;
+  border:1px solid black;
+  background-color:black ;
 
-          `;
+`;
 const Container = styled.div`
 margin-left:10px;
 margin-right:10px;

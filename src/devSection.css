@@ -17,3 +17,10 @@
     height: 100%;
     border: none;
   }
+  h1{
+    color:"white"
+  }
+
+  #TEXT{
+    color: white;
+  }

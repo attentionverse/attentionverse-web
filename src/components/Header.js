@@ -2,26 +2,31 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-// import { selectCars } from "../features/car/carSlice";
-// import { useSelector } from "react-redux";
+import "../index.css"
+
+
 
 function Header() {
+  const cars =["Your Dev Team","MVP in 2 Weeks","Case Studies","Startup Resources","REACH US"]
   const [burgerStatus, setBurgerStatus] = useState(false);
-  // const cars = useSelector(selectCars);
-
+  
   return (
     <Container>
       <a href="/">
-        <img src="/images/Icon.svg" alt=""  style={{height:60,width:30}}/>
+        <img src="/images/Icon.svg" alt=""  style={{height:60,width:30,color:'white'}}/>
       </a>
-      {/* <Menu>
+      <Menu>
         {cars &&
           cars.map((car, index) => (
-            <a href="/" key={index}>
+            <a  id="HEADER"
+            href={"#"+car.replace(/ /g,"_")}
+             key={index}>
+            
               {car}
             </a>
           ))}
-      </Menu> */}
+      </Menu>
+
       <RightMenu>
         {/* <a href="/">Shop</a>
         <a href="/">Account</a> */}
@@ -31,32 +36,24 @@ function Header() {
           }}
         />
       </RightMenu>
-      <BurgerNav show={burgerStatus}>
+      <BurgerNav 
+      show={burgerStatus}>
         <CustomClose
           onClick={() => {
             setBurgerStatus(false);
           }}
         />
-        {/* {/* {cars &&
+        {cars &&
           cars.map((car, index) => (
             <li key={index}>
-              <a href="/" key={index}>
+              <a 
+              id="HEADER-MENU"
+              href="/" 
+              key={index}>
                 {car}
               </a>
             </li>
-          ))} */}
-        <li>
-          <a href="/">Your Dev Team</a>
-        </li>
-        <li>
-          <a href="/">Case Studies</a>
-        </li>
-        <li>
-          <a href="/">Startup Resources</a>
-        </li>
-        <li>
-          <a href="/">Reach Us</a>
-        </li>
+          ))}
       </BurgerNav>
     </Container>
   );
@@ -105,6 +102,7 @@ const RightMenu = styled.div`
 
 const CustomMenu = styled(MenuIcon)`
   cursor: pointer;
+  
 `;
 
 const BurgerNav = styled.div`
